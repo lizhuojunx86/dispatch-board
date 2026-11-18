@@ -1,0 +1,48 @@
+{
+  "name": "dispatch-board",
+  "version": "0.1.0",
+  "description": "A side pane for Claude Code that shows where delegated work orders stand and what each lane has spent this month. Read-only.",
+  "author": { "name": "Zhuojun Li" },
+  "license": "MIT",
+  "keywords": ["mod", "pane", "orchestration", "multi-model", "budget"],
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "command": {
+      "type": "string",
+      "title": "Data command",
+      "description": "A command that prints a board snapshot as JSON (see README). Run without a shell, at most 5 seconds. Leave empty to read agent-dispatch's state files directly.",
+      "default": ""
+    },
+    "intervalSeconds": {
+      "type": "number",
+      "title": "Poll interval",
+      "description": "Seconds between polls while work is in flight. With nothing in flight the board polls once a minute.",
+      "default": 10
+    },
+    "showTitles": {
+      "type": "boolean",
+      "title": "Show titles",
+      "description": "Show each order's title, cut to 40 characters. Off by default: a title is the only free text the board can draw.",
+      "default": false
+    },
+    "maxRows": {
+      "type": "number",
+      "title": "Rows per section",
+      "description": "The most rows each section draws; the rest are counted on one line.",
+      "default": 6
+    },
+    "demo": {
+      "type": "boolean",
+      "title": "Demo data",
+      "description": "Draw built-in sample data and read nothing. For screenshots.",
+      "default": false
+    },
+    "language": {
+      "type": "string",
+      "title": "Language",
+      "description": "Language of the pane's labels.",
+      "options": ["en", "zh"],
+      "default": "en"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "dispatch-board",
+  "owner": { "name": "Zhuojun Li" },
+  "metadata": { "description": "dispatch-board, a read-only side pane for delegated work orders." },
+  "plugins": [
+    {
+      "name": "dispatch-board",
+      "source": "./",
+      "description": "A read-only side pane for delegated work orders and per-lane spend."
+    }
+  ]
+}

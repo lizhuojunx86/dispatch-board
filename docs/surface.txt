@@ -1,0 +1,7 @@
+./register.tsx hooks: session.start, command.run{command=dispatch-board}, ui.render{component=Pane, requestId=dispatch-board} (default matcher key: plugin)
+./register.tsx answers its own command: command.run{command=dispatch-board}
+./register.tsx calls: $.clock.every, $.clock.now, $.command.register, $.env.get, $.fs.list, $.fs.read, $.process.run, $.state.get, $.state.set, $.store.get, $.store.set, $.ui.open, $.ui.panes, $.ui.resolve
+./register.tsx env writes: nothing
+./register.tsx env reads: AGENT_DISPATCH_HOME, HOME
+./register.tsx state writes: dispatch-board.board
+./register.tsx state reads: dispatch-board.board

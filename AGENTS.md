@@ -12,6 +12,8 @@ scripts/surface.sh                  # engine calls and env reads still match doc
 
 If `scripts/surface.sh` fails because the mod now calls or reads something new, that is a privacy change: update PRIVACY.md, run `scripts/surface.sh --write`, and commit both together.
 
+When agent-dispatch changes its state files or its spend rule, capture again with `python3 scripts/conformance.py /path/to/agent-dispatch` and commit the regenerated `tests/fixtures/conformance.generated.ts` together with whatever the adapter needed.
+
 ## Rules that are not style
 
 - It watches and changes nothing. No hook on tool calls, prompts, permissions or the system prompt; nothing appended to the conversation; no model call; no network; no `$.fs.write`.

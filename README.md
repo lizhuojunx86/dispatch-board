@@ -133,10 +133,12 @@ If you keep several sessions open, they share one snapshot through the plugin's 
 
 ```
 claude plugin validate . --strict   # manifest, hooks module, types
-claude plugin test .                # 31 tests, under a second
+claude plugin test .                # 32 tests, a couple of seconds
 scripts/surface.sh                  # the engine calls still match docs/surface.txt
 claude --plugin-dir .               # try it for one session
 ```
+
+One test holds the file adapter against the dispatcher itself. `tests/fixtures/conformance.generated.ts` is a synthetic home plus what `agent-dispatch board --json` printed for it, and the test fails if the adapter would draw anything else from the same files. After a change to agent-dispatch, capture again with `python3 scripts/conformance.py /path/to/agent-dispatch` and run the tests. The first capture caught one difference: a queued order's `updatedAt`.
 
 The tests state behaviour in their names. The ones I would not ship without: a failing, slow or half-printing command leaves the session's own events untouched; nothing but ids, directory names, lanes, states and numbers reaches a label; a poll that changes nothing redraws nothing; a thousand finished orders draw as many elements as five.
 

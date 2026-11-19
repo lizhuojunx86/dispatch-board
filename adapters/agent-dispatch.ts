@@ -170,16 +170,20 @@ async function readOrder($: Engine, cache: HomeCache, id: string): Promise<void>
   }
   const isRunning = name === 'running' || name === 'reviewing'
   const isQueued = name === 'queued'
+  const startedAt = isQueued ? (state.queued_at ?? state.started_at) : state.started_at
   cache.rows.set(id, {
     id,
     project: meta.project,
     lane: text(state.current_worker) || meta.lane,
     state: name,
     round: typeof state.attempt === 'number' ? state.attempt : 1,
-    startedAt: isQueued ? (state.queued_at ?? state.started_at) : state.started_at,
+    startedAt,
+    // A queued order has not moved since it was queued, which is what the dispatcher reports too.
     updatedAt: isRunning
       ? ((await lastActivity($, dir)) ?? state.started_at)
-      : (state.finished_at ?? state.started_at),
+      : isQueued
+        ? startedAt
+        : (state.finished_at ?? state.started_at),
     title: meta.title,
     holdsSlot: name === 'running' || (name === 'reviewing' && text(state.slot_worker) !== ''),
     spend,

@@ -146,6 +146,8 @@ The tests state behaviour in their names. The ones I would not ship without: a f
 
 The idea of a pane that only watches, and the habit of keeping the mod's surface in a checked-in file, come from [lot-map](https://github.com/alexeyw/lot-map) by alexeyw. lot-map draws what the session itself is doing and, on principle, reads no file and starts no process. dispatch-board is for the part that leaves the session, which is exactly what those principles keep off lot-map's map.
 
+Since lot-map 0.13 the two meet on the map as well. Its `commandStations` option puts your dispatcher's command on a station of your choice, so `agent-dispatch=agents` lights Agents when a session submits an order, and this pane shows where the order stands afterwards. [How that option got there](https://dev.to/lizhuojunx86/the-maintainer-answered-my-pr-in-13-minutes-i-saw-it-two-days-later-281i).
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
